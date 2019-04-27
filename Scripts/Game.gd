@@ -5,3 +5,11 @@ func _ready():
 
 func updateHealthBar():
 	Global.ui.updateHealthBar(Global.player.health)
+
+func onPlayerDeath():
+	Global.ui.onPlayerDeath()
+	
+	$Timers/PlayerDeathTimer.start()
+
+func onPlayerDeathTimerTimeout():
+	get_tree().reload_current_scene()

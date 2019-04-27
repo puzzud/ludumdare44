@@ -14,7 +14,7 @@ data = PoolVector3Array( 0.4012, 0.64, -0.1839, 0.2124, 0.64, -0.511, 0.7788, 0.
 [node name="Bush" type="StaticBody"]
 collision_layer = 6
 script = ExtResource( 1 )
-damage = 10.0
+damage = 35.0
 
 [node name="Bush" type="MeshInstance" parent="."]
 transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 2, -1.125, 0, 1 )

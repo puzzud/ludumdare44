@@ -5,3 +5,6 @@ func _ready():
 
 func updateHealthBar(healthAmount):
 	$"Top Panel/ProgressBar".value = healthAmount
+
+func onPlayerDeath():
+	$"Main Caption/Dead".visible = true

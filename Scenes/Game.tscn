@@ -21,3 +21,10 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.50
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="PlayerDeathTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]

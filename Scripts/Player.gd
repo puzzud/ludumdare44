@@ -26,4 +26,4 @@ func takeDamage(damageAmount):
 	$ColorAnimator.play("hurt")
 
 func startDying():
-	pass
+	Global.game.onPlayerDeath()
