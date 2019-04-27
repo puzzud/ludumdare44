@@ -17,5 +17,13 @@ func _physics_process(delta):
 
 func takeDamage(damageAmount):
 	health -= damageAmount
+	if health <= 0.0:
+		health = 0.0
+		startDying()
 	
 	Global.game.updateHealthBar()
+	
+	$ColorAnimator.play("hurt")
+
+func startDying():
+	pass

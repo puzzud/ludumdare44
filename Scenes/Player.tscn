@@ -1,9 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Rabbit Import.tscn" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+
+[sub_resource type="Animation" id=3]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rabbit Import/LapiforsRabbit/Skeleton/material_0:mesh:surface_1/material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0.627451 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rabbit Import/LapiforsRabbit/Skeleton/material_0:mesh:surface_1/material:flags_transparent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Player" type="KinematicBody"]
 collision_mask = 7
@@ -24,3 +54,9 @@ current = true
 [node name="Rabbit Import" parent="." instance=ExtResource( 2 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, -10, 0, 0, 0 )
 
+[node name="ColorAnimator" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 4 )
+anims/hurt = SubResource( 3 )
+
+
+[editable path="Rabbit Import"]
