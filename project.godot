@@ -39,6 +39,12 @@ window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
+[layer_names]
+
+3d_physics/layer_1="Players"
+3d_physics/layer_2="Enemies"
+3d_physics/layer_3="Obstacles"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

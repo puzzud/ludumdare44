@@ -1,4 +1,7 @@
 extends Node
 
 func _ready():
-	pass
+	Global.game = self
+
+func updateHealthBar():
+	Global.ui.updateHealthBar(Global.player.health)
