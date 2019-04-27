@@ -30,6 +30,8 @@ window/size/height=1920
 window/size/test_width=540
 window/size/test_height=960
 window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [rendering]
 
