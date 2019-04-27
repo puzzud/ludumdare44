@@ -23,6 +23,12 @@ config/icon="res://Assets/Icons/icon.png"
 
 Global="*res://Scripts/Global.gd"
 
+[debug]
+
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1080
@@ -36,3 +42,4 @@ window/stretch/aspect="keep_width"
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
