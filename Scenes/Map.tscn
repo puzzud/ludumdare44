@@ -1,10 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Map" type="GridMap"]
+[ext_resource path="res://Assets/Models/Map Set/Mesh Library.meshlib" type="MeshLibrary" id=1]
+
+[node name="Map" type="Spatial"]
+
+[node name="Grid" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 3, 0.75, 3 )
 data = {
-"cells": PoolIntArray(  )
+"cells": PoolIntArray( -65536, 0, 0, -2, 0, 0, -1, 0, 0, -65533, 65532, -1610612736, -65536, 65533, 0, -2, 65533, 0, -1, 65533, 0, -65536, 65534, 0, -2, 65534, 0, -1, 65534, 0, -65536, 65535, 0, -65534, 65535, 0, -2, 65535, 536870912, -1, 65535, 536870912 )
 }
 __meta__ = {
-"_editor_clip_": 0
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
 }
 
