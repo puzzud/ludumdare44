@@ -1,12 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Player" type="Node"]
+[sub_resource type="SphereShape" id=1]
 
-[node name="Visual Representation" type="Node" parent="."]
-editor/display_folded = true
+[node name="Player" type="KinematicBody"]
 
-[node name="CSGSphere" type="CSGSphere" parent="Visual Representation"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+radial_segments = 50
+rings = 50
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, -5 )
+current = true
 
