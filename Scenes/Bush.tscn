@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/Map Set/Rock_1_01.obj" type="ArrayMesh" id=2]
@@ -9,9 +9,12 @@ albedo_color = Color( 0.0980392, 0.341176, 0.181618, 1 )
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( 0.4012, 0.64, -0.1839, 0.2124, 0.64, -0.511, 0.7788, 0.64, -0.1839, 0.7788, 0.64, -0.1839, 0.2124, 0.64, -0.511, 0.9676, 0.64, -0.511, 0.9676, 0.64, -0.511, 0.2124, 0.64, -0.511, 0.7788, 0.64, -0.838, 0.7788, 0.64, -0.838, 0.2124, 0.64, -0.511, 0.4012, 0.64, -0.838, 0.2124, 0.64, -0.511, 0.4012, 0.64, -0.1839, 0, 0, -0.511, 0, 0, -0.511, 0.4012, 0.64, -0.1839, 0.295, 0, 0, 0.4012, 0.64, -0.838, 0.2124, 0.64, -0.511, 0.295, 0, -1.0219, 0.295, 0, -1.0219, 0.2124, 0.64, -0.511, 0, 0, -0.511, 0.4012, 0.64, -0.838, 0.295, 0, -1.0219, 0.7788, 0.64, -0.838, 0.7788, 0.64, -0.838, 0.295, 0, -1.0219, 0.885, 0, -1.0219, 0.885, 0, -1.0219, 1.18, 0, -0.511, 0.7788, 0.64, -0.838, 0.7788, 0.64, -0.838, 1.18, 0, -0.511, 0.9676, 0.64, -0.511, 0, 0, -0.511, 0.295, 0, 0, 0.295, 0, -1.0219, 0.295, 0, -1.0219, 0.295, 0, 0, 0.885, 0, -1.0219, 0.885, 0, -1.0219, 0.295, 0, 0, 1.18, 0, -0.511, 1.18, 0, -0.511, 0.295, 0, 0, 0.885, 0, 0, 1.18, 0, -0.511, 0.885, 0, 0, 0.9676, 0.64, -0.511, 0.9676, 0.64, -0.511, 0.885, 0, 0, 0.7788, 0.64, -0.1839, 0.7788, 0.64, -0.1839, 0.885, 0, 0, 0.4012, 0.64, -0.1839, 0.4012, 0.64, -0.1839, 0.885, 0, 0, 0.295, 0, 0 )
 
+[sub_resource type="BoxShape" id=3]
+
 [node name="Bush" type="StaticBody"]
 collision_layer = 6
 script = ExtResource( 1 )
+damage = 10.0
 
 [node name="Bush" type="MeshInstance" parent="."]
 transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 2, -1.125, 0, 1 )
@@ -27,7 +30,6 @@ disabled = true
 collision_layer = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 2, -1.125, 0, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="Area" to="." method="onAreaBodyEntered"]

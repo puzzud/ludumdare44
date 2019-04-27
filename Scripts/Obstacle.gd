@@ -8,8 +8,6 @@ func _ready():
 	pass
 
 func onAreaBodyEntered(body):
-	print("hello")
-	
 	if damage <= 0.0:
 		return
 	
