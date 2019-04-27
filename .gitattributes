@@ -22,7 +22,7 @@
 *.godot text
 *.tres text
 *.res text
-*.meshlib text
+*.meshlib binary
 
 *.tsx text
 
