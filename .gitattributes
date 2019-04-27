@@ -21,7 +21,7 @@
 *.import text
 *.godot text
 *.tres text
-*.res text
+*.res binary
 *.meshlib binary
 
 *.tsx text
