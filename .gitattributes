@@ -35,6 +35,11 @@
 *.ico binary
 *.ttf binary
 
+*.dae binary
+*.fbx binary
+*.obj binary
+*.mtl text
+
 *.wav binary
 *.ogg binary
 *.mp3 binary
