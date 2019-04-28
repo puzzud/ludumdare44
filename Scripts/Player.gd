@@ -1,6 +1,7 @@
 extends KinematicBody
 
 signal generate_map(z_pos)
+signal finish_line_reached()
 
 var health = 100
 var run_speed = 6
@@ -15,6 +16,7 @@ var turning = 0
 var turn_speed = run_speed
 var turn_angle = .15
 var grid_row = 0
+var finish_line = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +33,8 @@ func _process(delta):
 	if grid_row != new_grid_row:
 		grid_row = new_grid_row
 		emit_signal("generate_map", grid_row)
+		if grid_row == finish_line:
+			emit_signal("finish_line_reached")
 
 func getInput():
 	if !is_on_floor() or turning != 0:
@@ -104,3 +108,6 @@ func startDying():
 	$SizeAnimator.play("dying")
 	
 	Global.game.onPlayerDeath()
+
+func _on_Player_finish_line_reached():
+	pass # Replace with function body.

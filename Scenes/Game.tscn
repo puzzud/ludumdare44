@@ -31,5 +31,8 @@ followDistance = Vector3( 0, 0, -5 )
 [node name="PlayerDeathTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
 one_shot = true
+
+[connection signal="finish_line_reached" from="Player" to="Player" method="_on_Player_finish_line_reached"]
+[connection signal="finish_line_reached" from="Player" to="." method="_on_Player_finish_line_reached"]
 [connection signal="generate_map" from="Player" to="." method="_on_Player_generate_map"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]

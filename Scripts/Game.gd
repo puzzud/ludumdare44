@@ -33,3 +33,6 @@ func _on_Player_generate_map(z_pos):
 	rand = randi() % 2
 	if rand > 0:
 		$Map/Floor.set_cell_item(1,0,z_offset,2)
+
+func _on_Player_finish_line_reached():
+	get_tree().reload_current_scene()
