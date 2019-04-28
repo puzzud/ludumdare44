@@ -28,6 +28,14 @@ func takeDamage(damageAmount):
 	
 	$ColorAnimator.play("hurt")
 
+func receiveHealth(healthAmount):
+	if health <= 0.0:
+		return
+	
+	health += healthAmount
+	
+	Global.game.updateHealthBar()
+
 func startDying():
 	$SizeAnimator.play("dying")
 	

@@ -12,6 +12,8 @@ func updateHealthBar(healthAmount):
 	
 	if initialHealthValue > healthAmount:
 		$"Top Panel/ColorAnimator".play("decrement")
+	elif initialHealthValue < healthAmount:
+		$"Top Panel/ColorAnimator".play("increment")
 
 func onPlayerDeath():
 	$"Main Caption/Dead".visible = true

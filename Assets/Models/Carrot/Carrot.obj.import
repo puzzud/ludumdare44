@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Carrot.obj-7b4d54803dad9e0f6abc5ee217e2239d.mesh"
+
+[deps]
+
+files=[ "res://.import/Carrot.obj-7b4d54803dad9e0f6abc5ee217e2239d.mesh" ]
+
+source_file="res://Assets/Models/Carrot/Carrot.obj"
+dest_files=[ "res://.import/Carrot.obj-7b4d54803dad9e0f6abc5ee217e2239d.mesh", "res://.import/Carrot.obj-7b4d54803dad9e0f6abc5ee217e2239d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

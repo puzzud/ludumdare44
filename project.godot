@@ -44,6 +44,7 @@ window/stretch/aspect="keep_width"
 3d_physics/layer_1="Players"
 3d_physics/layer_2="Enemies"
 3d_physics/layer_3="Obstacles"
+3d_physics/layer_4="Pickups"
 
 [rendering]
 
