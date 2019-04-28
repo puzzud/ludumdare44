@@ -13,3 +13,8 @@ func onAreaBodyEntered(body):
 	
 	if body is playerClass:
 		body.takeDamage(damage)
+		
+		# Assume eating a carrot.
+		var rustleAudioPlayers = $AudioPlayers/Rustles.get_children()
+		var rustleAudioPlayer = rustleAudioPlayers[randi() % rustleAudioPlayers.size()]
+		rustleAudioPlayer.play()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/Map Set/Rock_1_01.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Sounds/Rustle1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Rustle2.ogg" type="AudioStream" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.0980392, 0.341176, 0.181618, 1 )
@@ -32,4 +34,13 @@ collision_layer = 6
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 3 )
 
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Rustles" type="Node" parent="AudioPlayers"]
+
+[node name="Rustle1" type="AudioStreamPlayer" parent="AudioPlayers/Rustles"]
+stream = ExtResource( 3 )
+
+[node name="Rustle2" type="AudioStreamPlayer" parent="AudioPlayers/Rustles"]
+stream = ExtResource( 4 )
 [connection signal="body_entered" from="Area" to="." method="onAreaBodyEntered"]
