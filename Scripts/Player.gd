@@ -94,6 +94,11 @@ func receiveHealth(healthAmount):
 	health += healthAmount
 	
 	Global.game.updateHealthBar()
+	
+	# Assume eating a carrot.
+	var biteAudioPlayers = $AudioPlayers/Bites.get_children()
+	var biteAudioPlayer = biteAudioPlayers[randi() % biteAudioPlayers.size()]
+	biteAudioPlayer.play()
 
 func startDying():
 	$SizeAnimator.play("dying")

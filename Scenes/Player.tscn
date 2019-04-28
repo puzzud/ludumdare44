@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Rabbit Import.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sounds/Bite1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Bite2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/Bite3.ogg" type="AudioStream" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -98,5 +101,17 @@ anims/hurt = SubResource( 3 )
 anims/default = SubResource( 4 )
 anims/dying = SubResource( 5 )
 
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Bites" type="Node" parent="AudioPlayers"]
+
+[node name="Bite1" type="AudioStreamPlayer" parent="AudioPlayers/Bites"]
+stream = ExtResource( 3 )
+
+[node name="Bite2" type="AudioStreamPlayer" parent="AudioPlayers/Bites"]
+stream = ExtResource( 4 )
+
+[node name="Bite3" type="AudioStreamPlayer" parent="AudioPlayers/Bites"]
+stream = ExtResource( 5 )
 
 [editable path="Rabbit Import"]

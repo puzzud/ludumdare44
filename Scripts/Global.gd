@@ -7,4 +7,4 @@ var game = null
 var player = null
 
 func _ready():
-	pass
+	randomize()

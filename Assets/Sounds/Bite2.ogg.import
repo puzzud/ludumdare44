@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bite2.ogg-ad56f013a4e0d56f2e0de387fe4344de.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bite2.ogg"
+dest_files=[ "res://.import/Bite2.ogg-ad56f013a4e0d56f2e0de387fe4344de.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
