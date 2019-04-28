@@ -39,6 +39,7 @@
 *.fbx binary
 *.obj binary
 *.mtl text
+*.material binary
 
 *.wav binary
 *.ogg binary

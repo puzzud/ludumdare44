@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxShape" id=1]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "default"
 
 [sub_resource type="Animation" id=3]
@@ -35,7 +35,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "dying"
 length = 0.5
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0.01, 0.01, 0.01 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "dying"
 length = 5.0
 tracks/0/type = "value"
@@ -90,12 +90,12 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, -10, 0, 0, 0 )
 transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 5.82153e-18, -0.0400289, -0.0397067 )
 
 [node name="ColorAnimator" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 4 )
+anims/default = SubResource( 2 )
 anims/hurt = SubResource( 3 )
 
 [node name="SizeAnimator" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 6 )
-anims/dying = SubResource( 7 )
+anims/default = SubResource( 4 )
+anims/dying = SubResource( 5 )
 
 
 [editable path="Rabbit Import"]
