@@ -21,7 +21,9 @@ func getInput():
 	var jump = Input.is_action_just_pressed("jump")
 	if jump and is_on_floor():
 		velocity.y += jump_speed
-		$"Rabbit Import/AnimationPlayer".stop(false)
+		var animationPlayer = $"Rabbit Import/AnimationPlayer"
+		animationPlayer.seek(0.2, true)
+		animationPlayer.stop(false)
 		
 func _physics_process(delta):
 	velocity.y -= gravity * delta
