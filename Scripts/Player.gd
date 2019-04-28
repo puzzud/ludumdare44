@@ -11,6 +11,7 @@ var num_lanes = 3
 var lane_x_dist = 3
 var turning = 0
 var turn_speed = run_speed
+var turn_angle = .15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,17 +39,21 @@ func getInput():
 		animationPlayer.stop(false)
 	elif left and lane > 0:
 		turning = -1
+		rotate_y(-turning * turn_angle)
 	elif right and lane < num_lanes-1:
 		turning = 1
+		rotate_y(-turning * turn_angle)
 
 func handleTurning():
 	var position = get_global_transform().origin
 	if turning == -1: # Turning left
 		if position.x <= ((lane-middle_lane-1) * lane_x_dist):
+			rotate_y(turning * turn_angle)
 			turning = 0
 			lane -= 1
 	elif turning == 1: # Turning right
 		if position.x >= ((lane-middle_lane+1) * lane_x_dist):
+			rotate_y(turning * turn_angle)
 			turning = 0
 			lane += 1
 	velocity.x = turning * turn_speed
