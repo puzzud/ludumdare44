@@ -1,6 +1,10 @@
 extends KinematicBody
 
 var health = 100
+var run_speed = 6
+var jump_speed = 25
+var gravity = 30
+var velocity = Vector3()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,8 +16,16 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func getInput():
+	var jump = Input.is_action_just_pressed("jump")
+	if jump:# and is_on_floor():
+		velocity.y += jump_speed
+		
 func _physics_process(delta):
-	move_and_slide(Vector3(0,0,-5.0));
+	velocity.y -= gravity * delta
+	velocity.z = -run_speed
+	getInput()
+	velocity = move_and_slide(velocity, Vector3(0,1,0))
 
 func takeDamage(damageAmount):
 	if health <= 0.0:
