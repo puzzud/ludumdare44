@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Rabbit Import.tscn" type="PackedScene" id=2]
@@ -35,6 +35,38 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "dying"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rabbit Import/LapiforsRabbit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.01, 0.01, 0.01 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "dying"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rabbit Import/LapiforsRabbit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 0, 0, 0 ) ]
+}
+
 [node name="Player" type="KinematicBody"]
 collision_mask = 7
 script = ExtResource( 1 )
@@ -54,9 +86,16 @@ current = true
 [node name="Rabbit Import" parent="." instance=ExtResource( 2 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, -10, 0, 0, 0 )
 
+[node name="LapiforsRabbit" parent="Rabbit Import" index="2"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 5.82153e-18, -0.0400289, -0.0397067 )
+
 [node name="ColorAnimator" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 4 )
 anims/hurt = SubResource( 3 )
+
+[node name="SizeAnimator" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 6 )
+anims/dying = SubResource( 7 )
 
 
 [editable path="Rabbit Import"]
