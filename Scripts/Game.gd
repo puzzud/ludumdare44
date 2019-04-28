@@ -2,6 +2,8 @@ extends Node
 
 func _ready():
 	Global.game = self
+	
+	$Camera.setTarget(Global.player)
 
 func updateHealthBar():
 	Global.ui.updateHealthBar(Global.player.health)
