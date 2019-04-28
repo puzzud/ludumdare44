@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal generate_map(z_pos)
+
 var health = 100
 var run_speed = 6
 var jump_speed = 25
@@ -12,6 +14,7 @@ var lane_x_dist = 3
 var turning = 0
 var turn_speed = run_speed
 var turn_angle = .15
+var grid_row = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +26,11 @@ func _ready():
 func _process(delta):
 	if is_on_floor():
 		$"Rabbit Import/AnimationPlayer".play("default")
+	var position = get_global_transform().origin
+	var new_grid_row = int(-position.z / 3)
+	if grid_row != new_grid_row:
+		grid_row = new_grid_row
+		emit_signal("generate_map", grid_row)
 
 func getInput():
 	if !is_on_floor() or turning != 0:

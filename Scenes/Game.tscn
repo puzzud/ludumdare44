@@ -18,6 +18,7 @@ light_energy = 3.77
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 18.189, 0 )
+doppler_tracking = 2
 current = true
 followDistance = Vector3( 0, 0, -5 )
 
@@ -31,4 +32,5 @@ followDistance = Vector3( 0, 0, -5 )
 wait_time = 2.0
 one_shot = true
 
+[connection signal="generate_map" from="Player" to="." method="_on_Player_generate_map"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]

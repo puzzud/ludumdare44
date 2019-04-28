@@ -10,11 +10,13 @@ points = PoolVector3Array( 3, 0, 0, 0, 0, 0, 3, 0.3, 0, 0, 0.3, 0, 3, 0, 0, 3, 0
 [node name="MapSet" type="Spatial"]
 
 [node name="Grass" type="MeshInstance" parent="."]
+editor/display_folded = true
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 
 [node name="StaticBody" type="StaticBody" parent="Grass"]
+editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Grass/StaticBody"]
 shape = SubResource( 1 )
