@@ -87,7 +87,7 @@ current = true
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, -10, 0, 0, 0 )
 
 [node name="LapiforsRabbit" parent="Rabbit Import" index="2"]
-transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 5.82153e-18, -0.0400289, -0.0397067 )
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 5.82153e-18, -0.0400289, -0.0397067 )
 
 [node name="ColorAnimator" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 4 )
