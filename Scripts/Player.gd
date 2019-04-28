@@ -13,13 +13,15 @@ func _ready():
 	$"Rabbit Import/AnimationPlayer".get_animation("default").loop = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if is_on_floor():
+		$"Rabbit Import/AnimationPlayer".play("default")
 
 func getInput():
 	var jump = Input.is_action_just_pressed("jump")
-	if jump:# and is_on_floor():
+	if jump and is_on_floor():
 		velocity.y += jump_speed
+		$"Rabbit Import/AnimationPlayer".stop(false)
 		
 func _physics_process(delta):
 	velocity.y -= gravity * delta
