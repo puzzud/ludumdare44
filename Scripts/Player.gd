@@ -49,6 +49,9 @@ func getInput():
 		var animationPlayer = $"Rabbit Import/AnimationPlayer"
 		animationPlayer.seek(0.2, true)
 		animationPlayer.stop(false)
+		
+		$AudioPlayers/Jumps/Jump1.play()
+		
 	elif left and lane > 0:
 		turning = -1
 		rotate_y(-turning * turn_angle)
