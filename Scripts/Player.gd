@@ -14,7 +14,7 @@ var num_lanes = 3
 var lane_x_dist = 3
 var turning = 0
 var turn_speed = run_speed
-var turn_angle = .15
+var turn_angle = 30.0
 var grid_row = 0
 var finish_line = 30
 
@@ -40,12 +40,10 @@ func _process(delta):
 			emit_signal("finish_line_reached")
 
 func getInput():
-	if !is_on_floor() or turning != 0:
+	if !is_on_floor():
 		return
 		
 	var jump = Input.is_action_just_pressed("jump")
-	var left = Input.is_action_pressed("ui_left")
-	var right = Input.is_action_pressed("ui_right")
 	
 	if jump:
 		velocity.y += jump_speed
@@ -55,33 +53,27 @@ func getInput():
 		
 		$AudioPlayers/Jumps/Jump1.play()
 		
-	elif left and lane > 0:
-		turning = -1
-		rotate_y(-turning * turn_angle)
-	elif right and lane < num_lanes-1:
-		turning = 1
-		rotate_y(-turning * turn_angle)
-
-func handleTurning():
-	var position = get_global_transform().origin
-	if turning == -1: # Turning left
-		if position.x <= ((lane-middle_lane-1) * lane_x_dist):
-			rotate_y(turning * turn_angle)
-			turning = 0
-			lane -= 1
-	elif turning == 1: # Turning right
-		if position.x >= ((lane-middle_lane+1) * lane_x_dist):
-			rotate_y(turning * turn_angle)
-			turning = 0
-			lane += 1
-	velocity.x = turning * turn_speed
+	else:
+		turning = 0
 		
+		var left = Input.is_action_pressed("ui_left")
+		var right = Input.is_action_pressed("ui_right")
+		
+		if left:
+			turning += -1
+		
+		if right:
+			turning += 1
+	
+	var rotationDegrees = get_rotation_degrees()
+	rotationDegrees.y = -turning * turn_angle
+	set_rotation_degrees(rotationDegrees)
+
 func _physics_process(delta):
 	velocity.y -= gravity * delta
 	velocity.z = -run_speed
 	
-	if turning:
-		handleTurning()
+	velocity.x = turning * turn_speed
 	
 	velocity = move_and_slide(velocity, Vector3(0,1,0))
 
