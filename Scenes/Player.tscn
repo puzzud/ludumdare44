@@ -27,18 +27,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 0, 0, 0.627451 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Rabbit Import/LapiforsRabbit/Skeleton/material_0:mesh:surface_1/material:flags_transparent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "dying"
