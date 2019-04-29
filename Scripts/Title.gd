@@ -7,6 +7,10 @@ func _ready():
 	
 	startMovement()
 
+func _process(delta):
+	if Input.is_key_pressed(KEY_SPACE):
+		startGame()
+
 func startMovement():
 	var startPosition = Vector2(0, 0)
 	var targetPosition = Vector2(0, 0)
@@ -30,4 +34,7 @@ func onTweenTweenAllCompleted():
 	startMovement()
 
 func onStartButtonPressed():
+	startGame()
+
+func startGame():
 	get_tree().change_scene("res://Scenes/Game.tscn")
