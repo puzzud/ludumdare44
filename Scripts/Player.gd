@@ -9,6 +9,7 @@ var velocity = Vector3()
 var turning = 0
 var turn_speed = run_speed
 var turn_angle = 30.0
+var jumped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +31,8 @@ func getInput():
 	var jump = Input.is_action_just_pressed("jump")
 	
 	if jump:
-		velocity.y += jump_speed
+		jumped = true
+		
 		var animationPlayer = $"Rabbit Import/AnimationPlayer"
 		animationPlayer.seek(0.2, true)
 		animationPlayer.stop(false)
@@ -54,13 +56,17 @@ func getInput():
 	set_rotation_degrees(rotationDegrees)
 
 func _physics_process(delta):
-	velocity = Vector3(0.0, 0.0, 0.0)
+	velocity.x = 0.0
 	
 	velocity.y -= gravity * delta
 	
 	if running:
 		velocity.z = -run_speed
 		velocity.x = turning * turn_speed
+		
+		if jumped:
+			velocity.y += jump_speed
+			jumped = false
 	
 	velocity = move_and_slide(velocity, Vector3(0,1,0))
 
