@@ -4,6 +4,7 @@ signal generate_map(z_pos)
 signal finish_line_reached()
 
 var health = 100
+var running = true
 export(float) var run_speed = 6.0
 export(float) var jump_speed = 25.0
 var gravity = 30
@@ -70,10 +71,13 @@ func getInput():
 	set_rotation_degrees(rotationDegrees)
 
 func _physics_process(delta):
-	velocity.y -= gravity * delta
-	velocity.z = -run_speed
+	velocity = Vector3(0.0, 0.0, 0.0)
 	
-	velocity.x = turning * turn_speed
+	velocity.y -= gravity * delta
+	
+	if running:
+		velocity.z = -run_speed
+		velocity.x = turning * turn_speed
 	
 	velocity = move_and_slide(velocity, Vector3(0,1,0))
 
@@ -104,6 +108,8 @@ func receiveHealth(healthAmount):
 	biteAudioPlayer.play()
 
 func startDying():
+	running = false
+	
 	$SizeAnimator.play("dying")
 	
 	Global.game.onPlayerDeath()
