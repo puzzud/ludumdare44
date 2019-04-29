@@ -33,6 +33,8 @@ func getInput():
 	if jump:
 		jumped = true
 		
+		takeDamage(15.0, self)
+		
 		var animationPlayer = $"Rabbit Import/AnimationPlayer"
 		animationPlayer.seek(0.2, true)
 		animationPlayer.stop(false)
@@ -70,7 +72,7 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, Vector3(0,1,0))
 
-func takeDamage(damageAmount):
+func takeDamage(damageAmount, source):
 	if health <= 0.0:
 		return
 	
@@ -79,9 +81,12 @@ func takeDamage(damageAmount):
 		health = 0.0
 		startDying()
 	
-	Global.game.updateHealthBar()
+	var externalSource = source != self
 	
-	$ColorAnimator.play("hurt")
+	Global.game.updateHealthBar(externalSource)
+	
+	if externalSource:
+		$ColorAnimator.play("hurt")
 
 func receiveHealth(healthAmount):
 	if health <= 0.0:
@@ -89,7 +94,7 @@ func receiveHealth(healthAmount):
 	
 	health += healthAmount
 	
-	Global.game.updateHealthBar()
+	Global.game.updateHealthBar(true)
 	
 	# Assume eating a carrot.
 	var biteAudioPlayers = $AudioPlayers/Bites.get_children()

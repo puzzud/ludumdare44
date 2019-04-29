@@ -12,7 +12,7 @@ func onAreaBodyEntered(body):
 		return
 	
 	if body is playerClass:
-		body.takeDamage(damage)
+		body.takeDamage(damage, self)
 		
 		# Assume eating a carrot.
 		var rustleAudioPlayers = $AudioPlayers/Rustles.get_children()

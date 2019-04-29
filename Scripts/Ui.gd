@@ -3,7 +3,7 @@ extends CanvasLayer
 func _ready():
 	Global.ui = self
 
-func updateHealthBar(healthAmount):
+func updateHealthBar(healthAmount, externalSource):
 	var initialHealthValue = $"Top Panel/ProgressBar".value
 	
 	var tween = $"Top Panel/ProgressBarValueTween"
@@ -11,7 +11,10 @@ func updateHealthBar(healthAmount):
 	tween.start()
 	
 	if initialHealthValue > healthAmount:
-		$"Top Panel/ColorAnimator".play("decrement")
+		if externalSource:
+			$"Top Panel/ColorAnimator".play("decrement_external")
+		else:
+			$"Top Panel/ColorAnimator".play("decrement_internal")
 	elif initialHealthValue < healthAmount:
 		$"Top Panel/ColorAnimator".play("increment")
 

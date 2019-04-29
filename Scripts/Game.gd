@@ -5,8 +5,8 @@ func _ready():
 	
 	$Camera.setTarget(Global.player)
 
-func updateHealthBar():
-	Global.ui.updateHealthBar(Global.player.health)
+func updateHealthBar(externalSource):
+	Global.ui.updateHealthBar(Global.player.health, externalSource)
 
 func onPlayerDeath():
 	Global.ui.onPlayerDeath()
