@@ -1,6 +1,6 @@
 extends Camera
 
-export(Vector3) var followDistance
+var followDistance
 
 var target = null
 
@@ -13,6 +13,8 @@ func _physics_process(delta):
 
 func setTarget(target):
 	self.target = target
+	
+	followDistance = get_global_transform().origin - target.get_global_transform().origin
 	
 	if target != null:
 		updatePosition()
@@ -28,13 +30,3 @@ func updatePosition():
 	newPosition.y = position.y
 	
 	transform.origin = newPosition # NOTE: May be wrong coordinate space.
-	
-	#global_translate(newPosition)
-	
-	# Keep camera looking straight down.
-	#var lookAtPosition = targetPosition
-	#lookAtPosition.y = position.y
-	
-	#print(str(newPosition) + ":" + str(lookAtPosition))
-	
-	#look_at_from_position(newPosition, lookAtPosition, Global.UpDirection)

@@ -17,10 +17,9 @@ light_color = Color( 0.643137, 0.643137, 0.643137, 1 )
 light_energy = 3.77
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 18.189, 0 )
+transform = Transform( 1, 0, 0, 0, 0.429664, 0.902989, 0, -0.902989, 0.429664, 0, 12.5861, 2.15346 )
 doppler_tracking = 2
 current = true
-followDistance = Vector3( 0, 0, -5 )
 
 [node name="Map" parent="." instance=ExtResource( 4 )]
 
@@ -31,8 +30,7 @@ followDistance = Vector3( 0, 0, -5 )
 [node name="PlayerDeathTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
 one_shot = true
-
-[connection signal="finish_line_reached" from="Player" to="Player" method="_on_Player_finish_line_reached"]
 [connection signal="finish_line_reached" from="Player" to="." method="_on_Player_finish_line_reached"]
+[connection signal="finish_line_reached" from="Player" to="Player" method="_on_Player_finish_line_reached"]
 [connection signal="generate_map" from="Player" to="." method="_on_Player_generate_map"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]
