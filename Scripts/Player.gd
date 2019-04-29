@@ -26,8 +26,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	getInput()
+	
 	if is_on_floor():
 		$"Rabbit Import/AnimationPlayer".play("default")
+	
 	var position = get_global_transform().origin
 	var new_grid_row = int(-position.z / 3)
 	if grid_row != new_grid_row:
@@ -41,8 +44,8 @@ func getInput():
 		return
 		
 	var jump = Input.is_action_just_pressed("jump")
-	var left = Input.is_action_just_pressed("ui_left")
-	var right = Input.is_action_just_pressed("ui_right")
+	var left = Input.is_action_pressed("ui_left")
+	var right = Input.is_action_pressed("ui_right")
 	
 	if jump:
 		velocity.y += jump_speed
@@ -76,9 +79,10 @@ func handleTurning():
 func _physics_process(delta):
 	velocity.y -= gravity * delta
 	velocity.z = -run_speed
-	getInput()
+	
 	if turning:
 		handleTurning()
+	
 	velocity = move_and_slide(velocity, Vector3(0,1,0))
 
 func takeDamage(damageAmount):
