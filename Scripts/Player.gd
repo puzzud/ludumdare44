@@ -1,23 +1,14 @@
 extends KinematicBody
 
-signal generate_map(z_pos)
-signal finish_line_reached()
-
 var health = 100
 var running = true
 export(float) var run_speed = 6.0
 export(float) var jump_speed = 25.0
 var gravity = 30
 var velocity = Vector3()
-var middle_lane = 1
-var lane = 1
-var num_lanes = 3
-var lane_x_dist = 3
 var turning = 0
 var turn_speed = run_speed
 var turn_angle = 30.0
-var grid_row = 0
-var finish_line = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,14 +22,6 @@ func _process(delta):
 	
 	if is_on_floor():
 		$"Rabbit Import/AnimationPlayer".play("default")
-	
-	var position = get_global_transform().origin
-	var new_grid_row = int(-position.z / 3)
-	if grid_row != new_grid_row:
-		grid_row = new_grid_row
-		emit_signal("generate_map", grid_row)
-		if grid_row == finish_line:
-			emit_signal("finish_line_reached")
 
 func getInput():
 	if !is_on_floor():
@@ -113,6 +96,3 @@ func startDying():
 	$SizeAnimator.play("dying")
 	
 	Global.game.onPlayerDeath()
-
-func _on_Player_finish_line_reached():
-	pass # Replace with function body.
