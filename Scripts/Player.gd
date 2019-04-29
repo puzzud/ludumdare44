@@ -4,8 +4,8 @@ signal generate_map(z_pos)
 signal finish_line_reached()
 
 var health = 100
-var run_speed = 6
-var jump_speed = 25
+export(float) var run_speed = 6.0
+export(float) var jump_speed = 25.0
 var gravity = 30
 var velocity = Vector3()
 var middle_lane = 1
