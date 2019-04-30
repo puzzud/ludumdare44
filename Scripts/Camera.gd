@@ -14,9 +14,8 @@ func _physics_process(delta):
 func setTarget(target):
 	self.target = target
 	
-	followDistance = get_global_transform().origin - target.get_global_transform().origin
-	
 	if target != null:
+		followDistance = get_global_transform().origin - target.get_global_transform().origin
 		updatePosition()
 
 func updatePosition():
