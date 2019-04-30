@@ -9,6 +9,7 @@ var velocity = Vector3()
 var turning = 0
 var turn_speed = run_speed
 var turn_angle = 30.0
+var intendedTurnAngle = 0.0
 var jumped = false
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +54,8 @@ func getInput():
 		$AudioPlayers/Jumps/Jump1.play()
 		
 	else:
+		var previousTurning = turning
+		
 		turning = 0
 		
 		var left = Input.is_action_pressed("ui_left")
@@ -63,10 +66,15 @@ func getInput():
 		
 		if right:
 			turning += 1
-	
-	var rotationDegrees = get_rotation_degrees()
-	rotationDegrees.y = -turning * turn_angle
-	set_rotation_degrees(rotationDegrees)
+		
+		if previousTurning != turning:
+			var rotationDegrees = get_rotation_degrees()
+			intendedTurnAngle = -turning * turn_angle
+			rotationDegrees.y = intendedTurnAngle
+			
+			$TurnTween.stop_all()
+			$TurnTween.interpolate_property(self, "rotation_degrees", rotation_degrees, rotationDegrees, 0.125, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			$TurnTween.start()
 
 func _physics_process(delta):
 	if !running:

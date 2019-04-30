@@ -104,4 +104,6 @@ stream = ExtResource( 5 )
 [node name="Jump1" type="AudioStreamPlayer" parent="AudioPlayers/Jumps"]
 stream = ExtResource( 6 )
 
+[node name="TurnTween" type="Tween" parent="."]
+
 [editable path="Rabbit Import"]

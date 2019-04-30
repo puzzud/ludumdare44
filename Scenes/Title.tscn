@@ -17,7 +17,11 @@ margin_bottom = 40.0
 rect_scale = Vector2( 27.2422, 49.2205 )
 color = Color( 0.447059, 0.705882, 0.819608, 1 )
 
-[node name="Rabbit1" type="Label" parent="."]
+[node name="Rabbits" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Rabbit1" type="Label" parent="Rabbits"]
 anchor_right = 1.0
 margin_left = 70.0
 margin_top = 360.0
@@ -27,7 +31,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.4, 0.643137, 0.772549, 1 )
 text = "E"
 
-[node name="Rabbit2" type="Label" parent="."]
+[node name="Rabbit2" type="Label" parent="Rabbits"]
 margin_left = 20.0
 margin_top = 360.0
 margin_right = 1044.0
@@ -36,7 +40,9 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.196078, 0.47451, 0.623529, 1 )
 text = "E"
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Rabbit2Tween" type="Tween" parent="Rabbits"]
+
+[node name="RabbitsEntryTween" type="Tween" parent="Rabbits"]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -65,5 +71,5 @@ text = "Start"
 __meta__ = {
 "_edit_lock_": true
 }
-[connection signal="tween_all_completed" from="Tween" to="." method="onTweenTweenAllCompleted"]
+[connection signal="tween_all_completed" from="Rabbits/Rabbit2Tween" to="." method="onTweenTweenAllCompleted"]
 [connection signal="pressed" from="CanvasLayer2/Start Button" to="." method="onStartButtonPressed"]
