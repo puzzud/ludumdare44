@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sounds/Whistle1.ogg" type="AudioStream" id=6]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -52,6 +53,11 @@ one_shot = true
 [node name="FinishLineTimer" type="Timer" parent="Timers"]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Whistle1" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 6 )
 [connection signal="finish_line_reached" from="Map/Finish Line" to="." method="onFinishLineFinishLineReached"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="onStartTimerTimeout"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]

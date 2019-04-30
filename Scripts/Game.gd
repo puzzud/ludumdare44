@@ -21,6 +21,8 @@ func onPlayerDeath():
 	Global.ui.onPlayerDeath()
 	
 	$Timers/PlayerDeathTimer.start()
+	
+	$AudioPlayers/Whistle1.play()
 
 func onPlayerDeathTimerTimeout():
 	get_tree().reload_current_scene()
