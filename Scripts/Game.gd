@@ -1,6 +1,7 @@
 extends Node
 
 var raceFinished = false
+var raceStarted = false
 
 func _ready():
 	Global.game = self
@@ -8,6 +9,7 @@ func _ready():
 	$Camera.setTarget(Global.player)
 	
 	raceFinished = false
+	raceStarted = false
 	
 	$Timers/StartTimer.start()
 
@@ -18,6 +20,7 @@ func onStartTimerTimeout():
 	$"AudioPlayers/Start Beeps 123".play()
 
 func onStartBeeps123Finished():
+	raceStarted = true
 	Global.player.running = true
 	
 	$"AudioPlayers/Start Beeps 4".play()

@@ -34,7 +34,7 @@ func _process(delta):
 		$"Rabbit Import/AnimationPlayer".play("default")
 
 func getInput():
-	if Global.game.raceFinished:
+	if Global.game.raceFinished || !Global.game.raceStarted:
 		return
 	
 	if !is_on_floor():
