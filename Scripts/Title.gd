@@ -10,13 +10,15 @@ func _ready():
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_SPACE):
-		startGame()
+		startScreenChange()
 
 func moveInRabbits():
 	var startPosition = Vector2(1080, 0)
 	var targetPosition = Vector2(0, 0)
 	$Rabbits/RabbitsEntryTween.interpolate_property($Rabbits, "rect_position", startPosition, targetPosition, 0.5, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	$Rabbits/RabbitsEntryTween.start()
+	
+	$AudioPlayers/Whoosh1.play()
 
 func startMovement():
 	var startPosition = Vector2(0, 0)
@@ -41,7 +43,17 @@ func onTweenTweenAllCompleted():
 	startMovement()
 
 func onStartButtonPressed():
-	startGame()
+	startScreenChange()
 
 func startGame():
 	get_tree().change_scene("res://Scenes/Game.tscn")
+
+func startScreenChange():
+	var screenFader = $CanvasLayer2/ScreenFader
+	screenFader.visible = true
+	screenFader.get_node("AnimationPlayer").play("fadeOut")
+	
+	$AudioPlayers/Whoosh1.play()
+
+func onScreenFaderFadeOutFinished():
+	startGame()

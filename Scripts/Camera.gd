@@ -2,6 +2,8 @@ extends Camera
 
 var followDistance
 
+export(Vector3) var shakeOffset = Vector3(0.0, 0.0, 0.0)
+
 var target = null
 
 func _ready():
@@ -27,5 +29,7 @@ func updatePosition():
 	
 	# Keep height the same.
 	newPosition.y = position.y
+	
+	newPosition += shakeOffset
 	
 	transform.origin = newPosition # NOTE: May be wrong coordinate space.

@@ -12,6 +12,7 @@ func _ready():
 	raceStarted = false
 	
 	$Timers/StartTimer.start()
+	Global.ui.startFadeIn()
 
 func updateHealthBar(externalSource):
 	Global.ui.updateHealthBar(Global.player.health, externalSource)
@@ -47,4 +48,7 @@ func onFinishLineFinishLineReached():
 	$AudioPlayers/Success1.play()
 
 func onFinishLineTimerTimeout():
+	Global.ui.startFadeOut()
+
+func onUiFadeOutFinished():
 	get_tree().reload_current_scene()

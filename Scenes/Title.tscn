@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Title.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/lprabbits1.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Fonts/Cookies Big.res" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/ScreenFader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Whoosh1.ogg" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 1024
@@ -18,6 +20,7 @@ rect_scale = Vector2( 27.2422, 49.2205 )
 color = Color( 0.447059, 0.705882, 0.819608, 1 )
 
 [node name="Rabbits" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -71,5 +74,14 @@ text = "Start"
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="ScreenFader" parent="CanvasLayer2" instance=ExtResource( 4 )]
+visible = false
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="Whoosh1" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 5 )
 [connection signal="tween_all_completed" from="Rabbits/Rabbit2Tween" to="." method="onTweenTweenAllCompleted"]
 [connection signal="pressed" from="CanvasLayer2/Start Button" to="." method="onStartButtonPressed"]
+[connection signal="fadeOutFinished" from="CanvasLayer2/ScreenFader" to="." method="onScreenFaderFadeOutFinished"]

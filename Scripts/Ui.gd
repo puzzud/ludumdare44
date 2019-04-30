@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal fadeInFinished
+signal fadeOutFinished
+
 func _ready():
 	Global.ui = self
 	
@@ -41,3 +44,19 @@ func onJumpButtonDown():
 
 func onJumpButtonUp():
 	Input.action_release("jump")
+
+func startFadeIn():
+	var screenFader = $ScreenFader
+	screenFader.visible = true
+	screenFader.get_node("AnimationPlayer").play("fadeIn")
+
+func startFadeOut():
+	var screenFader = $ScreenFader
+	screenFader.visible = true
+	screenFader.get_node("AnimationPlayer").play("fadeOut")
+
+func onScreenFaderFadeInFinished():
+	emit_signal("fadeInFinished")
+
+func onScreenFaderFadeOutFinished():
+	emit_signal("fadeOutFinished")

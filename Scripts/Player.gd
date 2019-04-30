@@ -109,6 +109,7 @@ func takeDamage(damageAmount, source):
 	
 	if externalSource:
 		$ColorAnimator.play("hurt")
+		Global.game.get_node("Camera").get_node("AnimationPlayer").play("shake")
 
 func receiveHealth(healthAmount):
 	if health <= 0.0:
