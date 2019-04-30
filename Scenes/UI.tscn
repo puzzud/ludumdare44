@@ -120,3 +120,47 @@ margin_bottom = 889.0
 custom_fonts/font = ExtResource( 3 )
 text = ":("
 align = 1
+
+[node name="Controls" type="Control" parent="."]
+margin_top = 1650.0
+margin_right = 1080.0
+margin_bottom = 1900.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Left Button" type="Button" parent="Controls"]
+margin_left = 190.0
+margin_right = 390.0
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 2 )
+text = "<"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Jump Button" type="Button" parent="Controls"]
+margin_left = 440.0
+margin_right = 640.0
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 2 )
+text = "^"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Right Button" type="Button" parent="Controls"]
+margin_left = 690.0
+margin_right = 890.0
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 2 )
+text = ">"
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="button_down" from="Controls/Left Button" to="." method="onLeftButtonDown"]
+[connection signal="button_up" from="Controls/Left Button" to="." method="onLeftButtonUp"]
+[connection signal="button_down" from="Controls/Jump Button" to="." method="onJumpButtonDown"]
+[connection signal="button_up" from="Controls/Jump Button" to="." method="onJumpButtonUp"]
+[connection signal="button_down" from="Controls/Right Button" to="." method="onRightButtonDown"]
+[connection signal="button_up" from="Controls/Right Button" to="." method="onRightButtonUp"]

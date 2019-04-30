@@ -20,3 +20,21 @@ func updateHealthBar(healthAmount, externalSource):
 
 func onPlayerDeath():
 	$"Main Caption/Dead".visible = true
+
+func onLeftButtonDown():
+	Input.action_press("ui_left")
+
+func onRightButtonDown():
+	Input.action_press("ui_right")
+
+func onLeftButtonUp():
+	Input.action_release("ui_left")
+
+func onRightButtonUp():
+	Input.action_release("ui_right")
+
+func onJumpButtonDown():
+	Input.action_press("jump")
+
+func onJumpButtonUp():
+	Input.action_release("jump")
