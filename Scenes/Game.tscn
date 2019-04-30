@@ -41,6 +41,10 @@ jump_speed = 12.0
 
 [node name="Timers" type="Node" parent="."]
 
+[node name="StartTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
 [node name="PlayerDeathTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
 one_shot = true
@@ -49,6 +53,7 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 [connection signal="finish_line_reached" from="Map/Finish Line" to="." method="onFinishLineFinishLineReached"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="onStartTimerTimeout"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]
 [connection signal="timeout" from="Timers/FinishLineTimer" to="." method="onFinishLineTimerTimeout"]
 

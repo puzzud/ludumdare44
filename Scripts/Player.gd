@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var health = 100
-var running = true
+var running = false
 export(float) var run_speed = 6.0
 export(float) var jump_speed = 25.0
 var gravity = 30
@@ -15,13 +15,21 @@ var jumped = false
 func _ready():
 	Global.player = self
 	
-	$"Rabbit Import/AnimationPlayer".get_animation("default").loop = true
+	running = false
+	
+	var animationPlayer = $"Rabbit Import/AnimationPlayer"
+	animationPlayer.stop()
+	
+	var defaultAnimation = animationPlayer.get_animation("default")
+	defaultAnimation.loop = true
+	
+	animationPlayer.seek(0.0, true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	getInput()
 	
-	if is_on_floor():
+	if is_on_floor() && running:
 		$"Rabbit Import/AnimationPlayer".play("default")
 
 func getInput():
