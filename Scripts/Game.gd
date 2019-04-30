@@ -15,7 +15,13 @@ func updateHealthBar(externalSource):
 	Global.ui.updateHealthBar(Global.player.health, externalSource)
 
 func onStartTimerTimeout():
+	$"AudioPlayers/Start Beeps 123".play()
+
+func onStartBeeps123Finished():
 	Global.player.running = true
+	
+	$"AudioPlayers/Start Beeps 4".play()
+	$"AudioPlayers/Gunshot1".play()
 
 func onPlayerDeath():
 	Global.ui.onPlayerDeath()

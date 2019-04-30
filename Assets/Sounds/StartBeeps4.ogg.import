@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/StartBeeps4.ogg-0cd9f8ebdd27b7ea92000e5a792824e2.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/StartBeeps4.ogg"
+dest_files=[ "res://.import/StartBeeps4.ogg-0cd9f8ebdd27b7ea92000e5a792824e2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

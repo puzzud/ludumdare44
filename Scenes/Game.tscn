@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Sounds/Whistle1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sounds/StartBeeps123.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sounds/StartBeeps4.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/Gunshot1.ogg" type="AudioStream" id=9]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -43,7 +46,7 @@ jump_speed = 12.0
 [node name="Timers" type="Node" parent="."]
 
 [node name="StartTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
+wait_time = 0.25
 one_shot = true
 
 [node name="PlayerDeathTimer" type="Timer" parent="Timers"]
@@ -58,9 +61,20 @@ one_shot = true
 
 [node name="Whistle1" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource( 6 )
+
+[node name="Start Beeps 123" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 7 )
+
+[node name="Start Beeps 4" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 8 )
+
+[node name="Gunshot1" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 9 )
+volume_db = 3.0
 [connection signal="finish_line_reached" from="Map/Finish Line" to="." method="onFinishLineFinishLineReached"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="onStartTimerTimeout"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]
 [connection signal="timeout" from="Timers/FinishLineTimer" to="." method="onFinishLineTimerTimeout"]
+[connection signal="finished" from="AudioPlayers/Start Beeps 123" to="." method="onStartBeeps123Finished"]
 
 [editable path="Map"]
