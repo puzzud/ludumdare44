@@ -39,6 +39,9 @@ func onFinishLineFinishLineReached():
 	$Camera.setTarget(null)
 	
 	$Timers/FinishLineTimer.start()
+	
+	$AudioPlayers/Applause1.play()
+	$AudioPlayers/Success1.play()
 
 func onFinishLineTimerTimeout():
 	get_tree().reload_current_scene()

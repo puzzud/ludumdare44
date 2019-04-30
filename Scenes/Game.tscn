@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Sounds/StartBeeps123.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Sounds/StartBeeps4.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Sounds/Gunshot1.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sounds/Applause1.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/Success1.ogg" type="AudioStream" id=11]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -71,6 +73,12 @@ stream = ExtResource( 8 )
 [node name="Gunshot1" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource( 9 )
 volume_db = 3.0
+
+[node name="Applause1" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 10 )
+
+[node name="Success1" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 11 )
 [connection signal="finish_line_reached" from="Map/Finish Line" to="." method="onFinishLineFinishLineReached"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="onStartTimerTimeout"]
 [connection signal="timeout" from="Timers/PlayerDeathTimer" to="." method="onPlayerDeathTimerTimeout"]
