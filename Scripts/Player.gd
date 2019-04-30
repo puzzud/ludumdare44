@@ -58,6 +58,9 @@ func getInput():
 	set_rotation_degrees(rotationDegrees)
 
 func _physics_process(delta):
+	if !running:
+		velocity = Vector3(0.0, 0.0, 0.0)
+	
 	velocity.x = 0.0
 	
 	velocity.y -= gravity * delta
