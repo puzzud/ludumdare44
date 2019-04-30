@@ -2,6 +2,9 @@ extends CanvasLayer
 
 func _ready():
 	Global.ui = self
+	
+	if OS.has_touchscreen_ui_hint():
+		$Controls.visible = true
 
 func updateHealthBar(healthAmount, externalSource):
 	var initialHealthValue = $"Top Panel/ProgressBar".value
